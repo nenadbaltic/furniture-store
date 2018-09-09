@@ -71,6 +71,21 @@ a {
 	font-weight: bold;
 	line-height: 40px;
 }
+.logout {
+	background: #f5f5f3;
+	border: 0;
+    color: #5f6366;
+    padding: 0 40px;
+	line-height: 40px;
+	outline: none;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.2s ease-out,color 0.2s ease-out;
+}
+.logout:hover {
+	color: #fff;
+	background: #f7972b;
+}
 
 .container {
 	max-width: 1200px;
@@ -117,6 +132,9 @@ a {
 	display: inline-block;
 	vertical-align: middle;
 	max-width: 100%;
+}
+.content ul li img:hover {
+	opacity: 0.9;
 }
 .product-desc {
 	padding: 10px 15px 15px 15px;
@@ -510,31 +528,6 @@ a {
 .upload:disabled {
 	cursor: not-allowed;
 }
-.styled-select {
-	width: 600px;
-	height: 39px;
-	overflow: hidden;
-	/* background: url(../images/contact_arrow.png) no-repeat center right 21px; */
-	border: 1px solid #e7e4d9;
-	border-radius: 4px;
-	box-sizing: border-box;
-	margin-bottom: 20px;
-}
-.styled-select select {
-	background: transparent;
-	width: 600px;
-	padding-left: 10px;
-	font-size: 16px;
-	color: #898e91;
-	font-weight: 400;
-	border: 0;
-	border-radius: 0;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-ms-appearance: none;
-	height: 39px;
-	outline: none;
-}
 .submit {
 	cursor: pointer;
 }
@@ -571,4 +564,59 @@ a {
 }
 .view-products ul li:nth-child(2) {
 	width: 25%;
+}
+
+/* LOGIN */
+.bg {
+	background: url('/images/login_bg.jpg'); 
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+.login {
+	background: #ffffff91;
+    border-radius: 4px;
+    padding: 50px;
+	text-align: center;
+	max-width: 400px;
+	width: 95%;
+	box-sizing: border-box;
+	position: relative;
+	top: 35%;
+	margin: 0 auto;
+}
+.login h1 {
+	font-size: 42px;
+    color: #f7972b;
+    margin: 0;
+	padding: 0 0 30px 0;
+	text-shadow: 2px 2px 2px #908c8c;
+}
+.login button {
+	font-size: 18px;
+	color: #FFF;
+	border: none;
+	background-color: #f7972b;
+	border-radius: 4px;
+	padding: 0 25px;
+	outline: 0;
+	display: block;
+	margin:  0 auto;
+	height: 38px;
+	cursor: pointer;
+	transition: all .3s;
+}
+.login button:hover {
+	background: #efa655;
+}
+.loader {
+	height: 90vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.loader-image {
+	height: 80px;
+	width: 80px;
 }

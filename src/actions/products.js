@@ -14,7 +14,7 @@ export const startAddProduct = (productData) => {
         const { title = '', price = '', description = '', image = '', quantity = 1 } = productData;
         const product = { title, price, description, image, quantity };
 
-        database.ref('products').push(product).then((ref) => {
+        return database.ref('products').push(product).then((ref) => {
             dispatch(addProduct({
                 id: ref.key,
                 ...product
@@ -33,7 +33,7 @@ export const removeProduct = (id) => {
 
 export const startRemoveProduct = (id) => {
     return (dispatch) => {
-        database.ref(`products/${id}`).remove().then(() => {
+        return database.ref(`products/${id}`).remove().then(() => {
             dispatch(removeProduct(id));
         })
     }
@@ -51,7 +51,7 @@ export const editProduct = (id, updates) => {
 
 export const startEditProduct = (id, updates) => {
     return (dispatch) => {
-        database.ref(`products/${id}`).update(updates).then(() => {
+        return database.ref(`products/${id}`).update(updates).then(() => {
             dispatch(editProduct(id, updates));
         })
     }
@@ -68,7 +68,7 @@ export const setProducts = (products) => {
 
 export const startSetProducts = () => {
     return (dispatch) => {
-        database.ref('products').once('value').then((snapshot) => {
+        return database.ref('products').once('value').then((snapshot) => {
             const products = [];
             snapshot.forEach((childSnaphost) => {
                 products.push({

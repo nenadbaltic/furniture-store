@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import HomePage from '../components/HomePage';
 import ShopPage from '../components/ShopPage';
 import SingleItemPage from '../components/SingleItemPage';
@@ -11,27 +10,31 @@ import AdminPage from '../components/admin/AdminPage';
 import AddProductPage from '../components/admin/AddProductPage';
 import ViewProducts from '../components/admin/ViewProducts';
 import EditProduct from '../components/admin/EditProduct';
+import LoginPage from '../components/LoginPage';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
+
+export const history = createHistory();
 
 const AppRouter = () => {
      return (
-        <BrowserRouter>
+        <Router history={history}>
             <div>
-                <Header />
                 <Switch>
-                    <Route path="/" component={HomePage} exact={true} />
-                    <Route path="/shop" component={ShopPage} />
-                    <Route path="/single/:id" component={SingleItemPage} />
-                    <Route path="/cart" component={ShoppingCart} />
-                    <Route path="/admin" component={AdminPage} />
-                    <Route path="/create" component={AddProductPage} />
-                    <Route path="/view" component={ViewProducts} />
-                    <Route path="/edit/:id" component={EditProduct} />
+                    <PublicRoute path="/" component={LoginPage} exact={true} />
+                    <PrivateRoute path="/home" component={HomePage} />
+                    <PrivateRoute path="/shop" component={ShopPage} />
+                    <PrivateRoute path="/single/:id" component={SingleItemPage} />
+                    <PrivateRoute path="/cart" component={ShoppingCart} />
+                    <PrivateRoute path="/admin" component={AdminPage} />
+                    <PrivateRoute path="/create" component={AddProductPage} />
+                    <PrivateRoute path="/view" component={ViewProducts} />
+                    <PrivateRoute path="/edit/:id" component={EditProduct} />
                     <Route component={NotFoundPage} />
                 </Switch>
-                <Footer />
             </div>   
-        </BrowserRouter>
+        </Router>
     );
 };
 

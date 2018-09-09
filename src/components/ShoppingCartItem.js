@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { subTotal } from '../selectors/cart';
-import { addQuantity, removeQuantity, removeItem } from '../actions/cart';
+import { startAddQuantity, startRemoveQuantity, startRemoveItem } from '../actions/cart';
 
 class ShoppinCartItem extends React.Component {
-    addQuantity = () => {
-        this.props.addQuantity(this.props.id);
+    startAddQuantity = () => {
+        let quantity = this.props.quantity + 1;
+        this.props.startAddQuantity(this.props.dbId, quantity);
     }
-    removeQuantity = () => {
-        this.props.removeQuantity(this.props.id);
+    startRemoveQuantity = () => {
+        let quantity = this.props.quantity -1;
+        this.props.startRemoveQuantity(this.props.dbId, quantity);
     }
-    removeItem = () => {
-        this.props.removeItem(this.props.id);
+    startRemoveItem = () => {
+        this.props.startRemoveItem(this.props.dbId);
     }
 
     render() {
@@ -22,9 +24,9 @@ class ShoppinCartItem extends React.Component {
                 <li>{this.props.quantity}</li>
                 <li>${this.props.subTotal}</li>
                 <li>
-                    <i onClick={this.addQuantity} className="fas fa-plus-square"></i>
-                    <i onClick={this.removeQuantity} id={this.props.quantity > 1 ? 'allowed' : 'disabled'} className="fas fa-minus-square"></i>
-                    <i onClick={this.removeItem} className="fas fa-window-close"></i>
+                    <i onClick={this.startAddQuantity} className="fas fa-plus-square"></i>
+                    <i onClick={this.startRemoveQuantity} id={this.props.quantity > 1 ? 'allowed' : 'disabled'} className="fas fa-minus-square"></i>
+                    <i onClick={this.startRemoveItem} className="fas fa-window-close"></i>
                 </li>
             </ul>
         )
@@ -39,9 +41,9 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addQuantity: (id) => dispatch(addQuantity(id)),
-        removeQuantity: (id) => dispatch(removeQuantity(id)),
-        removeItem: (id) => dispatch(removeItem(id))
+        startAddQuantity: (dbId, quantity) => dispatch(startAddQuantity(dbId, quantity)),
+        startRemoveQuantity: (dbId, quantity) => dispatch(startRemoveQuantity(dbId, quantity)),
+        startRemoveItem: (dbId) => dispatch(startRemoveItem(dbId))
     }
 }
 

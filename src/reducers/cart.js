@@ -6,28 +6,30 @@ const cartReducer = (state = cartReducerDefaultState, action) => {
             return [...state, action.item];
         case 'ADD_QUANTITY':
             return state.map((item) => {
-                if(item.id === action.id) {
+                if(item.dbId === action.dbId) {
                     return {
                         ...item,
-                        quantity: item.quantity + 1
+                        quantity: action.quantity
                     }
                 }
                 return item;
             });
         case 'REMOVE_QUANTITY':
             return state.map((item) => {
-                if(item.id === action.id) {
+                if(item.dbId === action.dbId) {
                     return {
                         ...item,
-                        quantity: item.quantity - 1
+                        quantity: action.quantity
                     }
                 }
                 return item;
             });
         case 'REMOVE_ITEM':
             return state.filter((item) => {
-                return item.id !== action.id
+                return item.dbId !== action.dbId
             })
+        case 'SET_ITEM':
+            return action.items
         default:
             return state;
     }

@@ -1,18 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addItem, addQuantity } from '../actions/cart';
+import { startAddItem, startAddQuantity } from '../actions/cart';
 import { itemOrQuantity } from '../selectors/cart';
 
 class ShopItemPage extends React.Component {
     addSome = () => {
         if(itemOrQuantity(this.props.id, this.props.cart)) {
-            this.props.addQuantity(this.props.id);
-            // console.log('+');
+            let dbId;
+            let q;
+
+            // Get dbId and quantity 
+            this.props.cart.forEach((item) => {
+                if(item.id === this.props.id) {
+                     dbId = item.dbId;
+                     q = item.quantity;
+                }
+            })
+            let quantity = q + 1;           
+            this.props.startAddQuantity(dbId, quantity);
         }
         else {
-            this.props.addItem(this.props);
-            // console.log('add');
+            this.props.startAddItem(this.props);
+            console.log('add');
         }
         
     }
@@ -42,8 +52,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addItem: (item) => dispatch(addItem(item)),
-        addQuantity: (id) => dispatch(addQuantity(id))
+        startAddItem: (item) => dispatch(startAddItem(item)),
+        startAddQuantity: (dbId, quantity) => dispatch(startAddQuantity(dbId, quantity))
     }
 }
 

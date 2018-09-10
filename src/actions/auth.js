@@ -24,3 +24,10 @@ export const startLogout = () => {
         return firebase.auth().signOut();
     }
 }
+
+export const adminLogin = (email) => {
+    return {
+        type: 'ADMIN_LOGIN',
+        email: email
+    }
+}

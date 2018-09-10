@@ -9,11 +9,12 @@ export const addItem = (item) => {
 }
 
 export const startAddItem = (itemData) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         const { id, title = '', price = '', description = '', image = '', quantity = 1 } = itemData;
         const item = { id, title, price, description, image, quantity };
 
-        return database.ref('users').push(item).then((ref) => {
+        return database.ref(`users/${uid}/orders`).push(item).then((ref) => {
             dispatch(addItem({
                 ...item,
                 dbId: ref.key,
@@ -33,8 +34,9 @@ export const addQuantity = (dbId, quantity) => {
 }
 
 export const startAddQuantity = (dbId, quantity) => {
-    return (dispatch) => {
-        return database.ref(`users/${dbId}`).update({
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/orders/${dbId}`).update({
             quantity: quantity
         }).then(() => {
             dispatch(addQuantity(dbId, quantity));
@@ -53,8 +55,9 @@ export const removeQuantity = (dbId, quantity) => {
 }
 
 export const startRemoveQuantity = (dbId, quantity) => {
-    return (dispatch) => {
-        return database.ref(`users/${dbId}`).update({
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/orders/${dbId}`).update({
             quantity: quantity
         }).then(() => {
             dispatch(removeQuantity(dbId, quantity));
@@ -72,8 +75,9 @@ export const removeItem = (dbId) => {
 }
 
 export const startRemoveItem = (dbId) => {
-    return (dispatch) => {
-        return database.ref(`users/${dbId}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/orders/${dbId}`).remove().then(() => {
             dispatch(removeItem(dbId));
         })
     }
@@ -89,8 +93,9 @@ export const setItem = (items) => {
 }
 
 export const startSetItem = () => {
-    return (dispatch) => {
-        return database.ref('users').once('value').then((snapshot) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/orders`).once('value').then((snapshot) => {
             const items = [];
             snapshot.forEach((childSnaphost) => {
                 items.push({

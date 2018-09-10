@@ -4,7 +4,7 @@ import { startLogout } from '../actions/auth';
 
 const Logout = (props) => {
     return (
-        <li><button className="logout" onClick={props.startLogout}>Logout</button></li>
+        <li onClick={props.startLogout} className="logout">Logout</li>
     );
 }
 

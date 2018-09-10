@@ -20,7 +20,7 @@ class AddProductPage extends React.Component {
                     <div className="admin-content">
                         <Form onSubmit={this.onSubmit}/>
                     </div>
-                 <AdminSidebar />
+                <AdminSidebar />
                 </div>
             </div>
         );

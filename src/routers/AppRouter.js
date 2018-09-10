@@ -11,8 +11,10 @@ import AddProductPage from '../components/admin/AddProductPage';
 import ViewProducts from '../components/admin/ViewProducts';
 import EditProduct from '../components/admin/EditProduct';
 import LoginPage from '../components/LoginPage';
+import DemoPage from '../components/DemoPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import AdminRoute from './AdminRoute';
 
 
 export const history = createHistory();
@@ -27,10 +29,11 @@ const AppRouter = () => {
                     <PrivateRoute path="/shop" component={ShopPage} />
                     <PrivateRoute path="/single/:id" component={SingleItemPage} />
                     <PrivateRoute path="/cart" component={ShoppingCart} />
-                    <PrivateRoute path="/admin" component={AdminPage} />
-                    <PrivateRoute path="/create" component={AddProductPage} />
-                    <PrivateRoute path="/view" component={ViewProducts} />
-                    <PrivateRoute path="/edit/:id" component={EditProduct} />
+                    <PrivateRoute path="/demo" component={DemoPage} />
+                    <AdminRoute path="/admin" component={AdminPage} />
+                    <AdminRoute path="/create" component={AddProductPage} />
+                    <AdminRoute path="/view" component={ViewProducts} />
+                    <AdminRoute path="/edit/:id" component={EditProduct} />
                     <Route component={NotFoundPage} />
                 </Switch>
             </div>   

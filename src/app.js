@@ -5,7 +5,7 @@ import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
 import { startSetProducts } from './actions/products';
 import { startSetItem } from './actions/cart';
-import { login, logout } from './actions/auth';
+import { login, logout, adminLogin } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.css';
 import { firebase } from './firebase/firebase';
@@ -29,8 +29,18 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
+
 firebase.auth().onAuthStateChanged((user) => {
-    if(user) {
+    if(user && user.email === 'baltic.nenad@gmail.com') {
+        store.dispatch(adminLogin(user.email));
+        store.dispatch(startSetProducts()).then(() => {
+                renderApp();
+                if(history.location.pathname === '/') {
+                    history.push('/admin');
+                } 
+        });
+    }
+    else if(user) {
         store.dispatch(login(user.uid));
         store.dispatch(startSetProducts()).then(() => {
             store.dispatch(startSetItem()).then(() => {
@@ -40,7 +50,7 @@ firebase.auth().onAuthStateChanged((user) => {
                 }
             })
         });          
-}
+    }
     else {
         store.dispatch(logout());
         renderApp();

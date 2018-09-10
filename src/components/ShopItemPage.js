@@ -22,7 +22,6 @@ class ShopItemPage extends React.Component {
         }
         else {
             this.props.startAddItem(this.props);
-            console.log('add');
         }
         
     }

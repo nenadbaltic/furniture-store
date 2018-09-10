@@ -6,6 +6,10 @@ const authReducer = (state = {}, action) => {
             };
         case 'LOGOUT':
             return {};
+        case 'ADMIN_LOGIN':
+            return {
+                email: action.email
+            };
         default:
             return state;
     }

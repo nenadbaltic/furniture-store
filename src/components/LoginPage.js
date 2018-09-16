@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
+import AdminLogin from './AdminLogin';
 
 const LoginPage = (props) => {
     return (
@@ -8,7 +9,8 @@ const LoginPage = (props) => {
             <div className="login">
                 <h1>Furniture Store</h1>
                 <button onClick={props.startLogin}>Login with Google</button>
-            </div>
+                <AdminLogin />
+            </div>     
         </div>
         
     );

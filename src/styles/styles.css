@@ -572,7 +572,8 @@ a {
 	background: url('/images/login_bg.jpg'); 
     background-size: cover;
     height: 100vh;
-    width: 100vw;
+	width: 100vw;
+	min-height: 700px;
 }
 .login {
 	background: #ffffff91;
@@ -583,7 +584,7 @@ a {
 	width: 95%;
 	box-sizing: border-box;
 	position: relative;
-	top: 35%;
+	top: 20%;
 	margin: 0 auto;
 }
 .login h1 {
@@ -632,6 +633,97 @@ a {
 	max-width: 100%;
 	margin-bottom: 20px;
 	border-bottom: 1px solid #e7e4d9;
+}
+.admin-toggle {
+	margin-top: 30px;
+}
+.admin-toggle button {
+	font-size: 18px;
+    color: #FFF;
+    border: none;
+    background-color: #054ea9;
+    border-radius: 4px;
+    padding: 0 25px;
+    outline: 0;
+    display: block;
+    margin: 0 auto;
+    height: 38px;
+    cursor: pointer;
+	transition: all .3s;
+	max-width: 194px;
+	width: 100%;
+}
+.admin-toggle button:hover {
+	background: #3d84dc;
+}
+.admin-login p {
+	padding-bottom: 20px;
+    margin: 0;
+    font-size: 18px;
+    color: #fb0000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.admin-login {
+    text-align: center;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+button.admin-button {
+	background: #fb0000;	
+}
+button.admin-button:hover {
+	background: #f14848;
+}
+.input-group {
+	padding-bottom: 15px;
+}
+.input-group label {
+	display: block;
+	color: #2f2e2e;
+    font-size: 18px;
+    padding-bottom: 5px;
+}
+.input-group input {
+	font-family: 'Roboto', sans-serif;
+	max-width: 300px;
+	width: 100%;
+    height: 40px;
+    padding: 10px 15px;
+    border: none;
+    background: #FFF;
+    font-size: 18px;
+	color: #6b6b6b;
+	font-weight: 300;
+	box-sizing: border-box;
+	outline: none;
+	text-align: center;
+}
+.input-group ::-webkit-input-placeholder { /* WebKit browsers */
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	color: #6b6b6b;
+	font-weight: 300;
+}
+.input-group :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	color: #6b6b6b;
+	font-weight: 300;
+	opacity: 1;
+}
+.input-group ::-moz-placeholder { /* Mozilla Firefox 19+ */
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	color: #6b6b6b;
+	font-weight: 300;
+	opacity: 1;
+}
+.input-group :-ms-input-placeholder { /* Internet Explorer 10+ */
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	color: #6b6b6b;
+	font-weight: 300;
 }
 
 
@@ -695,7 +787,6 @@ a {
 		background: #f5f5f3;
 	}
 }
-
 @media (max-width: 768px) {
 	.menu ul li {
 		display: block;
@@ -763,7 +854,6 @@ a {
 	.view-products ul li:nth-child(2) {
 		width: 38%;
 	}
-
 }
 @media (max-width: 450px) {
 	.cart ul {

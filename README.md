@@ -1,6 +1,6 @@
 # Furniture Store
 
-I came up with a ficticious furniture web store for my personal project. Store admin can manage store products while store visitor can browse the catalogue and fill their shopping carts.
+I came up with a fictitious furniture web store for my personal project. Store admin can manage store products while store visitor can browse the catalogue and fill their shopping carts.
 
 ## [Live demo](https://react-furniture-store.herokuapp.com)
 
